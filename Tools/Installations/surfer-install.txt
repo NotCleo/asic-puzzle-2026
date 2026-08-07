@@ -7,4 +7,4 @@ Waveform Viewer : Surfer (Better Alternate to GTKWave)
   mkdir -p ~/.local/bin
   mv surfer ~/.local/bin/
   export PATH="$HOME/.local/bin:$PATH"
-  surfer path/to/your_waveform.vcd
+  surfer *.vcd
