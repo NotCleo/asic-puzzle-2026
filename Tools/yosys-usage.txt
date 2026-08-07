@@ -1,0 +1,5 @@
+To graph view the netlist : 
+
+  cd warmup
+  yosys -p "read_verilog 01_netlist.v; hierarchy -auto-top; show"
+  yosys -p "read_verilog 02_netlist_with_power_rails.v; hierarchy -auto-top; show"
