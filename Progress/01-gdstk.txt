@@ -1,0 +1,96 @@
+Documentation : https://heitzmann.github.io/gdstk/
+
+Installation : pip install gdstk
+
+python3 -c "
+import gdstk
+lib = gdstk.read_gds('puzzle.gds')
+for c in lib.cells:
+    print(f'{c.name:30} polys={len(c.polygons):6} refs={len(c.references):6}')
+"
+
+You then obtain : 
+
+INTERNAL_7                     polys=     1 refs=     0
+INTERNAL_3                     polys=     1 refs=     0
+VIA_M1M2_PR_MR                 polys=     3 refs=     0
+VIA_M3M4_PR                    polys=     3 refs=     0
+VIA_M2M3_PR                    polys=     3 refs=     0
+VIA_M1M2_PR                    polys=     3 refs=     0
+VIA_L1M1_PR_MR                 polys=     3 refs=     0
+VIA_via2_3_2000_480_1_6_320_320 polys=     8 refs=     0
+VIA_via3_4_2000_480_1_5_400_400 polys=     7 refs=     0
+VIA_via4_5_2000_480_1_5_400_400 polys=     7 refs=     0
+VIA_via5_6_2000_2000_1_1_1600_1600 polys=     3 refs=     0
+sky130_fd_sc_hd__nand3b_2      polys=    84 refs=     0
+sky130_fd_sc_hd__dfxtp_2       polys=   149 refs=     0
+sky130_fd_sc_hd__nand3_2       polys=    87 refs=     0
+sky130_fd_sc_hd__o21ba_2       polys=    75 refs=     0
+sky130_fd_sc_hd__o211ai_2      polys=    90 refs=     0
+sky130_fd_sc_hd__o31ai_2       polys=   105 refs=     0
+sky130_fd_sc_hd__a21bo_2       polys=    75 refs=     0
+sky130_fd_sc_hd__o311a_2       polys=    97 refs=     0
+sky130_fd_sc_hd__o22ai_2       polys=    98 refs=     0
+sky130_fd_sc_hd__o2bb2a_2      polys=    82 refs=     0
+sky130_fd_sc_hd__a32o_2        polys=    98 refs=     0
+sky130_fd_sc_hd__o32ai_2       polys=   121 refs=     0
+sky130_fd_sc_hd__a311o_2       polys=    87 refs=     0
+sky130_fd_sc_hd__a31oi_2       polys=   104 refs=     0
+sky130_fd_sc_hd__o21bai_2      polys=    87 refs=     0
+sky130_fd_sc_hd__nor4b_2       polys=   118 refs=     0
+sky130_fd_sc_hd__a22oi_2       polys=   100 refs=     0
+sky130_fd_sc_hd__or3b_2        polys=    65 refs=     0
+sky130_fd_sc_hd__a211o_2       polys=    83 refs=     0
+sky130_fd_sc_hd__dfstp_2       polys=   186 refs=     0
+sky130_fd_sc_hd__o22a_2        polys=    81 refs=     0
+sky130_fd_sc_hd__o32a_2        polys=    93 refs=     0
+sky130_fd_sc_hd__a21boi_2      polys=    80 refs=     0
+sky130_fd_sc_hd__o21ai_2       polys=    75 refs=     0
+sky130_fd_sc_hd__o221a_2       polys=    89 refs=     0
+sky130_fd_sc_hd__and3b_2       polys=    77 refs=     0
+sky130_fd_sc_hd__or2_2         polys=    51 refs=     0
+sky130_fd_sc_hd__a2111oi_2     polys=    99 refs=     0
+sky130_fd_sc_hd__o211a_2       polys=    77 refs=     0
+sky130_fd_sc_hd__o31a_2        polys=    83 refs=     0
+sky130_fd_sc_hd__or3_2         polys=    63 refs=     0
+sky130_fd_sc_hd__nor3_2        polys=    82 refs=     0
+sky130_fd_sc_hd__nor3b_2       polys=   100 refs=     0
+sky130_fd_sc_hd__a221oi_2      polys=   111 refs=     0
+sky130_fd_sc_hd__a41oi_2       polys=   122 refs=     0
+sky130_fd_sc_hd__xor2_2        polys=   110 refs=     0
+sky130_fd_sc_hd__a211oi_2      polys=   104 refs=     0
+sky130_fd_sc_hd__a21oi_2       polys=    70 refs=     0
+sky130_fd_sc_hd__xnor2_2       polys=   107 refs=     0
+sky130_fd_sc_hd__and4b_2       polys=    91 refs=     0
+sky130_fd_sc_hd__and4bb_2      polys=    88 refs=     0
+sky130_fd_sc_hd__a21o_2        polys=    66 refs=     0
+sky130_fd_sc_hd__nor2_2        polys=    58 refs=     0
+sky130_fd_sc_hd__nand2_2       polys=    60 refs=     0
+sky130_fd_sc_hd__or4b_2        polys=    70 refs=     0
+sky130_fd_sc_hd__and2_2        polys=    61 refs=     0
+sky130_fd_sc_hd__nand2b_2      polys=    79 refs=     0
+sky130_fd_sc_hd__o21a_2        polys=    67 refs=     0
+sky130_fd_sc_hd__nand4_2       polys=   107 refs=     0
+sky130_fd_sc_hd__nor4_2        polys=    96 refs=     0
+sky130_fd_sc_hd__and2b_2       polys=    61 refs=     0
+sky130_fd_sc_hd__and3_2        polys=    65 refs=     0
+sky130_fd_sc_hd__and4_2        polys=    83 refs=     0
+sky130_fd_sc_hd__buf_2         polys=    50 refs=     0
+sky130_fd_sc_hd__conb_1        polys=    36 refs=     0
+sky130_fd_sc_hd__or4_2         polys=    73 refs=     0
+sky130_fd_sc_hd__or4bb_2       polys=    88 refs=     0
+sky130_fd_sc_hd__dfrtp_2       polys=   197 refs=     0
+sky130_fd_sc_hd__a31o_2        polys=    73 refs=     0
+sky130_fd_sc_hd__a221o_2       polys=    91 refs=     0
+sky130_fd_sc_hd__a22o_2        polys=    81 refs=     0
+sky130_fd_sc_hd__mux2_1        polys=    77 refs=     0
+sky130_fd_sc_hd__inv_2         polys=    44 refs=     0
+sky130_fd_sc_hd__clkbuf_4      polys=    58 refs=     0
+sky130_fd_sc_hd__clkbuf_8      polys=    86 refs=     0
+sky130_fd_sc_hd__clkbuf_16     polys=   144 refs=     0
+sky130_fd_sc_hd__tapvpwrvgnd_1 polys=    22 refs=     0
+sky130_fd_sc_hd__decap_3       polys=    31 refs=     0
+sky130_fd_sc_hd__diode_2       polys=    33 refs=     0
+puzzle                         polys=  1499 refs=  9875
+
+
