@@ -1,0 +1,589 @@
+amrut@Maverick:~/asic-puzzle-2026$ surfer *.vcd
+ INFO libsurfer::wave_source: Wave source is file
+ INFO libsurfer::translation: Looking for user decoders at /home/amrut/.config/surfer/decoders
+ INFO libsurfer::translation: Looking for user decoders at .surfer/decoders
+ INFO libsurfer::translation: Looking for user mapping translators at /home/amrut/.config/surfer/mappings
+ INFO libsurfer::translation: Looking for user mapping translators at .surfer/mappings
+ INFO libsurfer::translation::wasm_translator: Looking for translators in /home/amrut/asic-puzzle-2026/.surfer/translators
+ INFO libsurfer::translation::wasm_translator: Looking for translators in /home/amrut/.local/share/surfer/translators
+ INFO libsurfer::file_watcher: Watching file example_inputs.vcd for changes
+ INFO libsurfer::batch_commands: Applying batch command: LoadFile("example_inputs.vcd", KeepAll)
+ INFO libsurfer::wave_source: Loading a waveform file: example_inputs.vcd
+ INFO libsurfer::async_util: Returning from perform work
+ INFO libsurfer::async_util: Starting async task
+ INFO libsurfer: Loaded the hierarchy and meta-data of example_inputs.vcd in 3.644193ms
+ INFO libsurfer::state: VCD file loaded
+ INFO libsurfer::async_util: Returning from perform work
+ INFO libsurfer::async_util: Starting async task
+ INFO libsurfer: Loaded the body of example_inputs.vcd in 58.000777ms
+ INFO libsurfer::async_util: Returning from perform work
+ INFO libsurfer::async_util: Starting async task
+ INFO libsurfer: Loaded 1 variables in 6.602308ms
+ INFO libsurfer::async_util: Returning from perform work
+ INFO libsurfer::async_util: Starting async task
+ INFO libsurfer: Loaded 1 variables in 5.554256ms
+ INFO libsurfer::async_util: Returning from perform work
+ INFO libsurfer::async_util: Starting async task
+ INFO libsurfer: Loaded 1 variables in 4.173147ms
+ INFO libsurfer::async_util: Returning from perform work
+ INFO libsurfer::async_util: Starting async task
+ INFO libsurfer: Loaded 1 variables in 5.900511ms
+amrut@Maverick:~/asic-puzzle-2026$ claude --resume
+
+Resume this session with:
+claude --resume 99cbb0d8-8f5c-426e-96aa-563c1e307d68
+amrut@Maverick:~/asic-puzzle-2026$ python -m venv venv
+Command 'python' not found, did you mean:
+  command 'python3' from deb python3
+  command 'python' from deb python-is-python3
+amrut@Maverick:~/asic-puzzle-2026$ python3 -m venv venv
+amrut@Maverick:~/asic-puzzle-2026$ source venv/bin/activate
+(venv) amrut@Maverick:~/asic-puzzle-2026$ pip install gdstk
+Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Collecting gdstk
+  Downloading gdstk-1.0.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+Collecting numpy (from gdstk)
+  Downloading numpy-2.5.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Downloading gdstk-1.0.1-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (541 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 541.8/541.8 kB 1.4 MB/s eta 0:00:00
+Downloading numpy-2.5.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 1.7 MB/s eta 0:00:00
+Installing collected packages: numpy, gdstk
+Successfully installed gdstk-1.0.1 numpy-2.5.1
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python3 -c "
+import gdstk
+lib = gdstk.read_gds('puzzle.gds')
+for c in lib.cells:
+    print(f'{c.name:30} polys={len(c.polygons):6} refs={len(c.references):6}')
+"
+INTERNAL_7                     polys=     1 refs=     0
+INTERNAL_3                     polys=     1 refs=     0
+VIA_M1M2_PR_MR                 polys=     3 refs=     0
+VIA_M3M4_PR                    polys=     3 refs=     0
+VIA_M2M3_PR                    polys=     3 refs=     0
+VIA_M1M2_PR                    polys=     3 refs=     0
+VIA_L1M1_PR_MR                 polys=     3 refs=     0
+VIA_via2_3_2000_480_1_6_320_320 polys=     8 refs=     0
+VIA_via3_4_2000_480_1_5_400_400 polys=     7 refs=     0
+VIA_via4_5_2000_480_1_5_400_400 polys=     7 refs=     0
+VIA_via5_6_2000_2000_1_1_1600_1600 polys=     3 refs=     0
+sky130_fd_sc_hd__nand3b_2      polys=    84 refs=     0
+sky130_fd_sc_hd__dfxtp_2       polys=   149 refs=     0
+sky130_fd_sc_hd__nand3_2       polys=    87 refs=     0
+sky130_fd_sc_hd__o21ba_2       polys=    75 refs=     0
+sky130_fd_sc_hd__o211ai_2      polys=    90 refs=     0
+sky130_fd_sc_hd__o31ai_2       polys=   105 refs=     0
+sky130_fd_sc_hd__a21bo_2       polys=    75 refs=     0
+sky130_fd_sc_hd__o311a_2       polys=    97 refs=     0
+sky130_fd_sc_hd__o22ai_2       polys=    98 refs=     0
+sky130_fd_sc_hd__o2bb2a_2      polys=    82 refs=     0
+sky130_fd_sc_hd__a32o_2        polys=    98 refs=     0
+sky130_fd_sc_hd__o32ai_2       polys=   121 refs=     0
+sky130_fd_sc_hd__a311o_2       polys=    87 refs=     0
+sky130_fd_sc_hd__a31oi_2       polys=   104 refs=     0
+sky130_fd_sc_hd__o21bai_2      polys=    87 refs=     0
+sky130_fd_sc_hd__nor4b_2       polys=   118 refs=     0
+sky130_fd_sc_hd__a22oi_2       polys=   100 refs=     0
+sky130_fd_sc_hd__or3b_2        polys=    65 refs=     0
+sky130_fd_sc_hd__a211o_2       polys=    83 refs=     0
+sky130_fd_sc_hd__dfstp_2       polys=   186 refs=     0
+sky130_fd_sc_hd__o22a_2        polys=    81 refs=     0
+sky130_fd_sc_hd__o32a_2        polys=    93 refs=     0
+sky130_fd_sc_hd__a21boi_2      polys=    80 refs=     0
+sky130_fd_sc_hd__o21ai_2       polys=    75 refs=     0
+sky130_fd_sc_hd__o221a_2       polys=    89 refs=     0
+sky130_fd_sc_hd__and3b_2       polys=    77 refs=     0
+sky130_fd_sc_hd__or2_2         polys=    51 refs=     0
+sky130_fd_sc_hd__a2111oi_2     polys=    99 refs=     0
+sky130_fd_sc_hd__o211a_2       polys=    77 refs=     0
+sky130_fd_sc_hd__o31a_2        polys=    83 refs=     0
+sky130_fd_sc_hd__or3_2         polys=    63 refs=     0
+sky130_fd_sc_hd__nor3_2        polys=    82 refs=     0
+sky130_fd_sc_hd__nor3b_2       polys=   100 refs=     0
+sky130_fd_sc_hd__a221oi_2      polys=   111 refs=     0
+sky130_fd_sc_hd__a41oi_2       polys=   122 refs=     0
+sky130_fd_sc_hd__xor2_2        polys=   110 refs=     0
+sky130_fd_sc_hd__a211oi_2      polys=   104 refs=     0
+sky130_fd_sc_hd__a21oi_2       polys=    70 refs=     0
+sky130_fd_sc_hd__xnor2_2       polys=   107 refs=     0
+sky130_fd_sc_hd__and4b_2       polys=    91 refs=     0
+sky130_fd_sc_hd__and4bb_2      polys=    88 refs=     0
+sky130_fd_sc_hd__a21o_2        polys=    66 refs=     0
+sky130_fd_sc_hd__nor2_2        polys=    58 refs=     0
+sky130_fd_sc_hd__nand2_2       polys=    60 refs=     0
+sky130_fd_sc_hd__or4b_2        polys=    70 refs=     0
+sky130_fd_sc_hd__and2_2        polys=    61 refs=     0
+sky130_fd_sc_hd__nand2b_2      polys=    79 refs=     0
+sky130_fd_sc_hd__o21a_2        polys=    67 refs=     0
+sky130_fd_sc_hd__nand4_2       polys=   107 refs=     0
+sky130_fd_sc_hd__nor4_2        polys=    96 refs=     0
+sky130_fd_sc_hd__and2b_2       polys=    61 refs=     0
+sky130_fd_sc_hd__and3_2        polys=    65 refs=     0
+sky130_fd_sc_hd__and4_2        polys=    83 refs=     0
+sky130_fd_sc_hd__buf_2         polys=    50 refs=     0
+sky130_fd_sc_hd__conb_1        polys=    36 refs=     0
+sky130_fd_sc_hd__or4_2         polys=    73 refs=     0
+sky130_fd_sc_hd__or4bb_2       polys=    88 refs=     0
+sky130_fd_sc_hd__dfrtp_2       polys=   197 refs=     0
+sky130_fd_sc_hd__a31o_2        polys=    73 refs=     0
+sky130_fd_sc_hd__a221o_2       polys=    91 refs=     0
+sky130_fd_sc_hd__a22o_2        polys=    81 refs=     0
+sky130_fd_sc_hd__mux2_1        polys=    77 refs=     0
+sky130_fd_sc_hd__inv_2         polys=    44 refs=     0
+sky130_fd_sc_hd__clkbuf_4      polys=    58 refs=     0
+sky130_fd_sc_hd__clkbuf_8      polys=    86 refs=     0
+sky130_fd_sc_hd__clkbuf_16     polys=   144 refs=     0
+sky130_fd_sc_hd__tapvpwrvgnd_1 polys=    22 refs=     0
+sky130_fd_sc_hd__decap_3       polys=    31 refs=     0
+sky130_fd_sc_hd__diode_2       polys=    33 refs=     0
+puzzle                         polys=  1499 refs=  9875
+(venv) amrut@Maverick:~/asic-puzzle-2026$ magic -dnull -noconsole -rcfile $PDK_ROOT/sky130A/libs.tech/magic/sky130A.magicrc
+Command 'magic' not found, but can be installed with:
+sudo apt install magic
+(venv) amrut@Maverick:~/asic-puzzle-2026$ sudo apt install magic
+[sudo] password for amrut: 
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  irsim
+The following NEW packages will be installed:
+  magic
+0 upgraded, 1 newly installed, 0 to remove and 647 not upgraded.
+Need to get 1,730 kB of archives.
+After this operation, 5,377 kB of additional disk space will be used.
+Get:1 http://in.archive.ubuntu.com/ubuntu noble/universe amd64 magic amd64 8.3.105+ds.1-1.1 [1,730 kB]
+Fetched 1,730 kB in 8s (208 kB/s)                                                                                                                                                      
+Selecting previously unselected package magic.
+dpkg: warning: files list file for package 'libfreeimage3:amd64' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'neovim' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libocct-draw-7.6t64:amd64' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libx11-dev:amd64' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'parted' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'occt-misc' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'p11-kit-modules:amd64' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libghc-contravariant-dev' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'os-prober' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'pinentry-gnome3' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libghc-bifunctors-dev' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'patch' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'pciutils' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libghc-th-abstraction-dev' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'pcmciautils' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'orca' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'p11-kit' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libocct-modeling-algorithms-7.6t64:amd64' missing; assuming package has no files currently installed
+(Reading database ... 677484 files and directories currently installed.)
+Preparing to unpack .../magic_8.3.105+ds.1-1.1_amd64.deb ...
+Unpacking magic (8.3.105+ds.1-1.1) ...
+Setting up magic (8.3.105+ds.1-1.1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for menu (2.1.50) ...
+(venv) amrut@Maverick:~/asic-puzzle-2026$ magic -dnull -noconsole -rcfile $PDK_ROOT/sky130A/libs.tech/magic/sky130A.magicrc
+
+Magic 8.3 revision 105 - Compiled on Mon, 06 Dec 2021 22:32:27 +0200.
+Starting magic under Tcl interpreter
+Using the terminal as the console.
+Using NULL graphics device.
+Processing system .magicrc file
+Using technology "minimum", version 0.0
+% gds read puzzle.gds
+Don't know how to read GDS-II:
+Nothing in "cifinput" section of tech file.
+% load <topcell>
+File <topcell>.mag couldn't be read
+No such file or directory
+Creating new cell
+% ^C
+(venv) amrut@Maverick:~/asic-puzzle-2026$ import gdstk
+lib = gdstk.read_gds('puzzle.gds')
+top = [c for c in lib.cells if c.name == 'puzzle'][0]
+inv = [c for c in lib.cells if c.name.endswith('inv_2')][0]
+for c in (top, inv):
+    print(c.name, 'polys', len(c.polygons), 'paths', len(c.paths), 'labels', len(c.labels))
+    for l in c.labels[:10]: print('   ', l.text, l.layer, l.texttype)
+
+^Cbash: syntax error near unexpected token `('
+top: unknown option '='
+bash: syntax error near unexpected token `('
+bash: syntax error near unexpected token `('
+bash: syntax error near unexpected token `c.name,'
+bash: syntax error near unexpected token `('
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim read.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python read.py 
+puzzle polys 1499 paths 7061 labels 17
+    I 70 5
+    O[0] 70 5
+    O[1] 70 5
+    O[2] 70 5
+    O[3] 70 5
+    O[4] 70 5
+    O[5] 70 5
+    O[6] 70 5
+    O[7] 70 5
+    clk 70 5
+sky130_fd_sc_hd__inv_2 polys 44 paths 2 labels 9
+    A 67 5
+    Y 67 5
+    Y 67 5
+    Y 67 5
+    VPWR 68 5
+    VGND 68 5
+    VPB 64 5
+    VNB 64 59
+    inv_2 83 44
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim read_layout.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python read_layout.py.py 
+python: can't open file '/home/amrut/asic-puzzle-2026/read_layout.py.py': [Errno 2] No such file or directory
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python read_layout.py
+Traceback (most recent call last):
+  File "/home/amrut/asic-puzzle-2026/read_layout.py", line 1, in <module>
+    import klayout.db as db
+ModuleNotFoundError: No module named 'klayout'
+(venv) amrut@Maverick:~/asic-puzzle-2026$ pip install klayout
+Looking in indexes: https://pypi.org/simple, https://pypi.ngc.nvidia.com
+Collecting klayout
+  Downloading klayout-0.30.10-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (868 bytes)
+Downloading klayout-0.30.10-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (27.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 27.3/27.3 MB 711.3 kB/s eta 0:00:00
+Installing collected packages: klayout
+Successfully installed klayout-0.30.10
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python read_layout.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat read
+read_layout.py  read.py         
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat read.py 
+import gdstk
+lib = gdstk.read_gds('puzzle.gds')
+top = [c for c in lib.cells if c.name == 'puzzle'][0]
+inv = [c for c in lib.cells if c.name.endswith('inv_2')][0]
+for c in (top, inv):
+    print(c.name, 'polys', len(c.polygons), 'paths', len(c.paths), 'labels', len(c.labels))
+    for l in c.labels[:10]: print('   ', l.text, l.layer, l.texttype)
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat read_layout.py 
+import klayout.db as db
+
+ly = db.Layout(); ly.read("puzzle.gds")
+top = ly.cell("puzzle")
+l2n = db.LayoutToNetlist(db.RecursiveShapeIterator(ly, top, []))
+
+DRAW = {"li1":(67,20),"met1":(68,20),"met2":(69,20),"met3":(70,20),
+        "met4":(71,20),"met5":(72,20),"mcon":(67,44),"via":(68,44),
+        "via2":(69,44),"via3":(70,44),"via4":(71,44)}
+L = {n: l2n.make_polygon_layer(ly.layer(*ld), n) for n, ld in DRAW.items()}
+
+# pin/label layers so nets and pins get real names
+for n, ld in {"li1":(67,5),"met1":(68,5),"met2":(69,5),
+              "met3":(70,5),"met4":(71,5),"met5":(72,5)}.items():
+    l2n.connect(L[n], l2n.make_text_layer(ly.layer(*ld), n+"_lbl"))
+
+stack = ["li1","mcon","met1","via","met2","via2","met3","via3","met4","via4","met5"]
+for a in stack:
+    l2n.connect(L[a])                       # intra-layer
+for a, b in zip(stack, stack[1:]):
+    l2n.connect(L[a], L[b])                 # inter-layer through vias
+
+l2n.extract_netlist()
+nl = l2n.netlist()
+open("puzzle_netlist.txt","w").write(str(nl))
+(venv) amrut@Maverick:~/asic-puzzle-2026$ 
+(venv) amrut@Maverick:~/asic-puzzle-2026$ 
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim net_to_v.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python net_to_v.py 
+Traceback (most recent call last):
+  File "/home/amrut/asic-puzzle-2026/net_to_v.py", line 2, in <module>
+    src, dst = sys.argv[1], sys.argv[2]
+               ~~~~~~~~^^^
+IndexError: list index out of range
+(venv) amrut@Maverick:~/asic-puzzle-2026$ ls
+example_inputs.vcd  layout.png  net_to_v.py  puzzle.gds  puzzle_netlist.txt  read_layout.py  README.md  read.py  venv  warmup
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python net_to_v.py puzzle_netlist.txt puzzle.v
+728 instances, 711 wires -> puzzle.v
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat read_layout.py 
+import klayout.db as db
+
+ly = db.Layout(); ly.read("puzzle.gds")
+top = ly.cell("puzzle")
+l2n = db.LayoutToNetlist(db.RecursiveShapeIterator(ly, top, []))
+
+DRAW = {"li1":(67,20),"met1":(68,20),"met2":(69,20),"met3":(70,20),
+        "met4":(71,20),"met5":(72,20),"mcon":(67,44),"via":(68,44),
+        "via2":(69,44),"via3":(70,44),"via4":(71,44)}
+L = {n: l2n.make_polygon_layer(ly.layer(*ld), n) for n, ld in DRAW.items()}
+
+# pin/label layers so nets and pins get real names
+for n, ld in {"li1":(67,5),"met1":(68,5),"met2":(69,5),
+              "met3":(70,5),"met4":(71,5),"met5":(72,5)}.items():
+    l2n.connect(L[n], l2n.make_text_layer(ly.layer(*ld), n+"_lbl"))
+
+stack = ["li1","mcon","met1","via","met2","via2","met3","via3","met4","via4","met5"]
+for a in stack:
+    l2n.connect(L[a])                       # intra-layer
+for a, b in zip(stack, stack[1:]):
+    l2n.connect(L[a], L[b])                 # inter-layer through vias
+
+l2n.extract_netlist()
+nl = l2n.netlist()
+open("puzzle_netlist.txt","w").write(str(nl))
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim read_layout.py 
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python read_layout.py 
+(venv) amrut@Maverick:~/asic-puzzle-2026$ grep -c '\$[0-9]*=\$' puzzle_netlist.txt 
+5908
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat read_layout.py 
+import klayout.db as db
+
+ly = db.Layout(); ly.read("puzzle.gds")
+top = ly.cell("puzzle")
+l2n = db.LayoutToNetlist(db.RecursiveShapeIterator(ly, top, []))
+
+DRAW = {"li1":(67,20),"met1":(68,20),"met2":(69,20),"met3":(70,20),
+        "met4":(71,20),"met5":(72,20),"mcon":(67,44),"via":(68,44),
+        "via2":(69,44),"via3":(70,44),"via4":(71,44)}
+L = {n: l2n.make_polygon_layer(ly.layer(*ld), n) for n, ld in DRAW.items()}
+
+for n, ld in {"licon1": (66, 44), "poly": (66, 20)}.items():
+    L[n] = l2n.make_polygon_layer(ly.layer(*ld), n)
+l2n.connect(L["licon1"])
+l2n.connect(L["poly"])
+l2n.connect(L["li1"], L["licon1"])
+l2n.connect(L["licon1"], L["poly"])
+
+# pin/label layers so nets and pins get real names
+for n, ld in {"li1":(67,5),"met1":(68,5),"met2":(69,5),
+              "met3":(70,5),"met4":(71,5),"met5":(72,5)}.items():
+    l2n.connect(L[n], l2n.make_text_layer(ly.layer(*ld), n+"_lbl"))
+
+stack = ["li1","mcon","met1","via","met2","via2","met3","via3","met4","via4","met5"]
+for a in stack:
+    l2n.connect(L[a])                       # intra-layer
+for a, b in zip(stack, stack[1:]):
+    l2n.connect(L[a], L[b])                 # inter-layer through vias
+
+l2n.extract_netlist()
+nl = l2n.netlist()
+open("puzzle_netlist.txt","w").write(str(nl))
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python read_layout.py 
+(venv) amrut@Maverick:~/asic-puzzle-2026$ grep -c '\$[0-9]*=\$' puzzle_netlist.txt 
+5908
+(venv) amrut@Maverick:~/asic-puzzle-2026$ grep '^circuit sky130' puzzle_netlist.txt | grep '\$[0-9]*='
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim check.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python check.py puzzle_netlist.txt
+[1] cell defs with anonymous pins : 0   (want 0)
+Traceback (most recent call last):
+  File "/home/amrut/asic-puzzle-2026/check.py", line 19, in <module>
+    pin, net = p.split('=', 1)
+    ^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+(venv) amrut@Maverick:~/asic-puzzle-2026$ iverilog -o sim tb.v puzzle.v $PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+tb.v: No such file or directory
+No top level modules, and no -s option.
+(venv) amrut@Maverick:~/asic-puzzle-2026$ rm check.py 
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim check.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python check.py puzzle_netlist.txt
+[1] cell defs with anonymous pins : 0   (want 0)
+[2] logic cells                   : 728
+[3] nets                          : 711
+[4] multi-driven nets             : 0   (want 0)
+[5] undriven nets (4) : ['I', 'clk', 'enable', 'rst_n']
+      (want exactly: I, clk, rst_n, enable)
+(venv) amrut@Maverick:~/asic-puzzle-2026$ rm net_to_v.py 
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim net_to_v.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python net_to_v.py puzzle_netlist.txt puzzle.v
+722 instances, 698 wires -> puzzle.v
+(venv) amrut@Maverick:~/asic-puzzle-2026$ ls
+check.py  example_inputs.vcd  layout.png  net_to_v.py  puzzle.gds  puzzle_netlist.txt  puzzle.v  read_layout.py  README.md  read.py  venv  warmup
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat net_to_v.py 
+import re, sys
+src = sys.argv[1] if len(sys.argv) > 1 else "puzzle_netlist.txt"
+dst = sys.argv[2] if len(sys.argv) > 2 else "puzzle.v"
+txt = open(src).read()
+body = re.search(r'^circuit puzzle \(\);\n(.*?)\n^end;', txt, re.S|re.M).group(1)
+insts = re.findall(r'^\s*subcircuit (\S+) (\S+) \((.*)\);$', body, re.M)
+
+PHYS  = ('tapvpwrvgnd','decap','diode','fill','conb_1')   # no logical function
+PWR   = {'VPWR','VGND','VPB','VNB'}
+PORTS = {'I','clk','rst_n','enable','success'} | {f"O[{i}]" for i in range(8)}
+
+def split_pins(s): return re.findall(r"(?:'[^']*'|[^,])+", s)
+def parts(t):      return t.strip().strip("'").split(',')
+
+def netname(tok):
+    p = parts(tok)
+    if 'VPWR' in p: return "1'b1"          # incl. tie-high 'HI,VPWR'
+    if 'VGND' in p: return "1'b0"          # incl. tie-low  'LO,VGND'
+    n = p[0]
+    return n if n in PORTS else 'n' + n.lstrip('$').replace('I', 'i')
+
+wires, lines = set(), []
+for cell, inst, pins in insts:
+    if cell.startswith('VIA_') or any(k in cell for k in PHYS): continue
+    conns = []
+    for tok in split_pins(pins):
+        pin, net = tok.split('=', 1)
+        pin = parts(pin)[0]
+        if pin in PWR: continue
+        w = netname(net)
+        if not w.startswith("1'b") and w not in PORTS: wires.add(w)
+        conns.append(f".{pin}({w})")
+    lines.append(f"  {cell} u{inst.lstrip('$')} ({', '.join(conns)});")
+
+with open(dst, 'w') as f:
+    f.write("module puzzle (\n  input I, clk, rst_n, enable,\n"
+            "  output success,\n  output [7:0] O\n);\n")
+    for w in sorted(wires): f.write(f"  wire {w};\n")
+    f.write("\n" + "\n".join(lines) + "\nendmodule\n")
+print(f"{len(lines)} instances, {len(wires)} wires -> {dst}")
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat read_layout.py 
+import klayout.db as db
+
+ly = db.Layout(); ly.read("puzzle.gds")
+top = ly.cell("puzzle")
+l2n = db.LayoutToNetlist(db.RecursiveShapeIterator(ly, top, []))
+
+DRAW = {"li1":(67,20),"met1":(68,20),"met2":(69,20),"met3":(70,20),
+        "met4":(71,20),"met5":(72,20),"mcon":(67,44),"via":(68,44),
+        "via2":(69,44),"via3":(70,44),"via4":(71,44)}
+L = {n: l2n.make_polygon_layer(ly.layer(*ld), n) for n, ld in DRAW.items()}
+
+for n, ld in {"licon1": (66, 44), "poly": (66, 20)}.items():
+    L[n] = l2n.make_polygon_layer(ly.layer(*ld), n)
+l2n.connect(L["licon1"])
+l2n.connect(L["poly"])
+l2n.connect(L["li1"], L["licon1"])
+l2n.connect(L["licon1"], L["poly"])
+
+# pin/label layers so nets and pins get real names
+for n, ld in {"li1":(67,5),"met1":(68,5),"met2":(69,5),
+              "met3":(70,5),"met4":(71,5),"met5":(72,5)}.items():
+    l2n.connect(L[n], l2n.make_text_layer(ly.layer(*ld), n+"_lbl"))
+
+stack = ["li1","mcon","met1","via","met2","via2","met3","via3","met4","via4","met5"]
+for a in stack:
+    l2n.connect(L[a])                       # intra-layer
+for a, b in zip(stack, stack[1:]):
+    l2n.connect(L[a], L[b])                 # inter-layer through vias
+
+l2n.extract_netlist()
+nl = l2n.netlist()
+open("puzzle_netlist.txt","w").write(str(nl))
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat read.py 
+import gdstk
+lib = gdstk.read_gds('puzzle.gds')
+top = [c for c in lib.cells if c.name == 'puzzle'][0]
+inv = [c for c in lib.cells if c.name.endswith('inv_2')][0]
+for c in (top, inv):
+    print(c.name, 'polys', len(c.polygons), 'paths', len(c.paths), 'labels', len(c.labels))
+    for l in c.labels[:10]: print('   ', l.text, l.layer, l.texttype)
+(venv) amrut@Maverick:~/asic-puzzle-2026$ cat check.py 
+import re, sys, collections
+path = sys.argv[1] if len(sys.argv) > 1 else "puzzle_netlist.txt"
+txt = open(path).read()
+body = re.search(r'^circuit puzzle \(\);\n(.*?)\n^end;', txt, re.S|re.M).group(1)
+insts = re.findall(r'^\s*subcircuit (\S+) (\S+) \((.*)\);$', body, re.M)
+
+bad = [l for l in txt.split('\n') if l.startswith('circuit sky130') and re.search(r'\$\d+=', l)]
+print(f"[1] cell defs with anonymous pins : {len(bad)}   (want 0)")
+for l in bad: print("      ", l)
+
+OUT  = {'X','Y','Q','Q_N','HI','LO','SUM','COUT','COUT_N'}
+PWR  = {'VPWR','VGND','VPB','VNB'}
+PHYS = ('tapvpwrvgnd','decap','diode','fill')
+
+def split_pins(s):                       # commas inside '...' are part of the name
+    return re.findall(r"(?:'[^']*'|[^,])+", s)
+def parts(tok):                          # 'LO,VGND' -> {'LO','VGND'}
+    return set(tok.strip().strip("'").split(','))
+
+drv, ld = collections.defaultdict(list), collections.defaultdict(list)
+n_cells = 0
+for cell, inst, pins in insts:
+    if cell.startswith('VIA_') or any(k in cell for k in PHYS): continue
+    n_cells += 1
+    for tok in split_pins(pins):
+        pin, net = tok.split('=', 1)
+        pset, nset = parts(pin), parts(net)
+        if pset & PWR or nset & {'VPWR','VGND'}: continue
+        key = net.strip().strip("'")
+        (drv if pset & OUT else ld)[key].append(f"{cell} {inst}.{pin}")
+
+nets  = set(drv) | set(ld)
+multi = {n: v for n, v in drv.items() if len(v) > 1}
+undrv = sorted(n for n in nets if n not in drv)
+print(f"[2] logic cells                   : {n_cells}")
+print(f"[3] nets                          : {len(nets)}")
+print(f"[4] multi-driven nets             : {len(multi)}   (want 0)")
+for n, v in list(multi.items())[:8]: print("      ", n, v)
+print(f"[5] undriven nets ({len(undrv)}) : {undrv}")
+print( "      (want exactly: I, clk, rst_n, enable)")
+(venv) amrut@Maverick:~/asic-puzzle-2026$ sudo apt install iverilog
+[sudo] password for amrut: 
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+iverilog is already the newest version (12.0-2build2).
+0 upgraded, 0 newly installed, 0 to remove and 647 not upgraded.
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim make_tb.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python make_tb.py example_inputs.vcd
+tb.v: 723 input events, ref.json: 24 reference events
+(venv) amrut@Maverick:~/asic-puzzle-2026$ iverilog -o sim tb.v sky130_cells.v puzzle.v -s tb
+./sim
+sky130_cells.v: No such file or directory
+Preprocessor failed with 1 errors.
+bash: ./sim: No such file or directory
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim sky120_cells.v
+(venv) amrut@Maverick:~/asic-puzzle-2026$ iverilog -o sim tb.v sky130_cells.v puzzle.v -s tb
+sky130_cells.v: No such file or directory
+Preprocessor failed with 1 errors.
+(venv) amrut@Maverick:~/asic-puzzle-2026$ ./sim
+bash: ./sim: No such file or directory
+(venv) amrut@Maverick:~/asic-puzzle-2026$ mv sky120_cells.v sky130_cells.v
+(venv) amrut@Maverick:~/asic-puzzle-2026$ ls
+check.py            layout.png  net_to_v.py  puzzle_netlist.txt  read_layout.py  read.py   sky130_cells.v  venv
+example_inputs.vcd  make_tb.py  puzzle.gds   puzzle.v            README.md       ref.json  tb.v            warmup
+(venv) amrut@Maverick:~/asic-puzzle-2026$ iverilog -o sim tb.v sky130_cells.v puzzle.v -s tb
+(venv) amrut@Maverick:~/asic-puzzle-2026$ ./sim
+VCD info: dumpfile out.vcd opened for output.
+tb.v:1356: $finish called at 3130000 (1ps)
+(venv) amrut@Maverick:~/asic-puzzle-2026$ vim compare.py
+(venv) amrut@Maverick:~/asic-puzzle-2026$ python compare.py
+reference transitions: 22   simulated: 22
+  FIRST MISMATCH  ref: (5000, 'O', '0')  mine: (0, 'O', '0')
+
+*** MISMATCH ***
+ref : [(5000, 'O', '0'), (5000, 'success', '0'), (1255000, 'O', '1010100'), (1265000, 'O', '1010010'), (1275000, 'O', '1011001'), (1285000, 'O', '100000'), (1295000, 'O', '1000001'), (1305000, 'O', '1000111')]
+mine: [(0, 'O', '0'), (0, 'success', '0'), (1255000, 'O', '1010100'), (1265000, 'O', '1010010'), (1275000, 'O', '1011001'), (1285000, 'O', '100000'), (1295000, 'O', '1000001'), (1305000, 'O', '1000111')]
+(venv) amrut@Maverick:~/asic-puzzle-2026$ sudo apt install z3
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following NEW packages will be installed:
+  z3
+0 upgraded, 1 newly installed, 0 to remove and 647 not upgraded.
+Need to get 5,911 kB of archives.
+After this operation, 16.4 MB of additional disk space will be used.
+Get:1 http://in.archive.ubuntu.com/ubuntu noble/universe amd64 z3 amd64 4.8.12-3.1build1 [5,911 kB]
+Fetched 5,911 kB in 12s (509 kB/s)
+Selecting previously unselected package z3.
+dpkg: warning: files list file for package 'libfreeimage3:amd64' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'neovim' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libocct-draw-7.6t64:amd64' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libx11-dev:amd64' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'parted' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'occt-misc' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'p11-kit-modules:amd64' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libghc-contravariant-dev' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'os-prober' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'pinentry-gnome3' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libghc-bifunctors-dev' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'patch' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'pciutils' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libghc-th-abstraction-dev' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'pcmciautils' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'orca' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'p11-kit' missing; assuming package has no files currently installed
+dpkg: warning: files list file for package 'libocct-modeling-algorithms-7.6t64:amd64' missing; assuming package has no files currently installed
+(Reading database ... 677870 files and directories currently installed.)
+Preparing to unpack .../z3_4.8.12-3.1build1_amd64.deb ...
+Unpacking z3 (4.8.12-3.1build1) ...
+Setting up z3 (4.8.12-3.1build1) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+(venv) amrut@Maverick:~/asic-puzzle-2026$ 
