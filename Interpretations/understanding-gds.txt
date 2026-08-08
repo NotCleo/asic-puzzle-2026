@@ -1,3 +1,7 @@
 While looking at the gds file provided in the Skywater PDK, I read /home/amrut/.ciel/ciel/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
 
 and figured how we can for a half adder look at a gds file and actually work our way back to knowing it was a half adder
+
+for which I looked into https://skywater-pdk.readthedocs.io/en/main/contents/libraries/sky130_fd_sc_hd/cells/or4b/README.html
+
+while using https://gds-viewer.tinytapeout.com/
