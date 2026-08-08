@@ -1,3 +1,5 @@
+see : https://www.vlsi.kr/en/asic-reverse-engineering-gds-netlist-rtl-intent-en/
+
 Netlist Breakdown of 01_netlist.v : 
 
     (if we ignore the decap + tap cells)
